@@ -11,6 +11,7 @@ jobs:
         with:
           root_file: grlnotes.tex
           working_directory: src
+          os: debian
           args: -r latexmkrc
           latexmk_shell_escape: true
           extra_system_packages: "fonts-noto-cjk"
