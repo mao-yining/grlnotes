@@ -10,7 +10,7 @@ INSTALL = cp
 
 all: $(PDF)
 
-$(PDF): $(REQUIRE) FORCE_MAKE
+$(PDF): $(REQUIRE)
 	$(TEX) $(MODE) $(NAME)
 
 install: all
