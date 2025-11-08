@@ -7,6 +7,7 @@
 使用 XeLaTeX 编译本项目。用到的宏包列表如下：
 
 - ctex
+- ifplatform
 - fontspec
 - geometry
 - graphicx
@@ -17,11 +18,10 @@
 - tocbibind
 - ulem
 - biblatex
+- ifdraft
 - imakeidx
 - hyperref
 
 ## Contributing
 
 当然，语文的这些知识大部分是从各大教科书中摘录而来。如果你对本项目有想法，欢迎提交 PR 或 issue。
-
-TODO: 现在本书的索引部分还没有制作完成。
