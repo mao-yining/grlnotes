@@ -3,7 +3,7 @@ PDF     = $(NAME).pdf
 REQUIRE = $(NAME).tex
 
 TEX     = latexmk -xelatex
-MODE    = -interaction=nonstopmode -synctex=1
+MODE    = -interaction=nonstopmode -synctex=1 -shell-escape
 
 RM      = rm -f
 INSTALL = cp
