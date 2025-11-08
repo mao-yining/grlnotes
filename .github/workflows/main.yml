@@ -14,8 +14,8 @@ jobs:
           os: debian
           latexmk_shell_escape: true
           latexmk_use_lualatex: true
-          extra_system_packages: "fonts-noto-cjk fonts-cmu"
-          extra_fonts: ./fonts/**/*.ttc
+          extra_system_packages: "fonts-noto-cjk"
+          extra_fonts: ./fonts/opentype/noto/*.ttc
       - uses: actions/upload-artifact@v4
         with:
           name: grlnotes
