@@ -6,26 +6,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: nschloe/action-cached-lfs-checkout@v1
-  
-    - name: Install Chinese fonts
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra
-        
-    - name: Verify fonts installation
-      run: |
-        fc-list :family | grep -i noto | head -10
-        echo "Available Chinese fonts:"
-        fc-list :lang=zh | head -10
-        
-    - uses: xu-cheng/latex-action@v3
-      with:
-        root_file: grlnotes.tex
-        working_directory: src
-        args: -r latexmkrc
-        
-    - uses: actions/upload-artifact@v4
-      with:
-        name: grlnotes
-        path: src/grlnotes.pdf
+      - uses: nschloe/action-cached-lfs-checkout@v1
+
+      - name: Install Chinese fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk-sc
+
+      - name: Verify fonts installation
+        run: |
+          fc-list :family | grep -i noto | head -10
+          echo "Available Chinese fonts:"
+          fc-list :lang=zh | head -10
+
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: grlnotes.tex
+          working_directory: src
+          args: -r latexmkrc
+          latexmk_shell_escape: true
+          extra_fonts:  /usr/share/fonts/opentype/noto/*.ttc
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: grlnotes
+          path: src/grlnotes.pdf
