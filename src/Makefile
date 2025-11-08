@@ -22,4 +22,4 @@ clean:
 distclean: clean
 	$(RM) ../$(NAME).pdf
 
-.PHONY: all install clean distclean FORCE_MAKE
+.PHONY: all install clean distclean
