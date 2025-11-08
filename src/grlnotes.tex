@@ -1,4 +1,10 @@
-\documentclass[final,oneside]{ctexbook}
+\documentclass[final,oneside,fontset=none]{ctexbook}
+\usepackage{ifplatform}
+\ifwindows \ctexset{fontset=windows}
+\else\ifmacosx \ctexset{fontset=mac}
+\else\iflinux \ctexset{fontset=ubuntu}
+\else \ctexset{fontset=fandol}
+\fi\fi\fi
 \usepackage{fontspec}
 \setmainfont{CMU Serif}
 \setsansfont{CMU Sans Serif}
