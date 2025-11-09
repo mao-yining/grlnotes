@@ -8,7 +8,6 @@
 
 - ctex
 - ifplatform
-- fontspec
 - geometry
 - graphicx
 - longtable
