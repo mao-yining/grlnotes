@@ -21,7 +21,6 @@
 - tocbibind
 - ulem
 - biblatex
-- ifdraft
 - imakeidx
 - hyperref
 
