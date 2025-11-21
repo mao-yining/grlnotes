@@ -7,7 +7,6 @@
 使用 XeLaTeX 编译本项目。用到的宏包列表如下：
 
 - ctex
-- ifplatform
 - geometry
 - graphicx
 - longtable

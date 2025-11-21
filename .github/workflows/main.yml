@@ -11,11 +11,7 @@ jobs:
         with:
           root_file: grlnotes.tex
           working_directory: src
-          os: debian
-          latexmk_shell_escape: true
           latexmk_use_xelatex: true
-          extra_system_packages: "fonts-noto-cjk"
-          extra_fonts: ./fonts/opentype/noto/*.ttc
       - uses: actions/upload-artifact@v4
         with:
           name: grlnotes
