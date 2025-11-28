@@ -1,13 +1,13 @@
 \documentclass[final,oneside]{ctexbook}
 \setmainfont{TeX Gyre Termes}
-\usepackage[b5paper]{geometry}
+\usepackage[b5paper]{geometry} % 前三行与 ../.github/workflows/main.yml 有关
 \usepackage{graphicx}
 \usepackage{longtable,bigstrut,makecell}
 \usepackage[longtable]{multirow}
 \usepackage{multicol}
 \usepackage{tocbibind}
 \usepackage[normalem]{ulem} % normalem 选项防止对 \emph 的修改
-\usepackage{makeidx}
+\usepackage{imakeidx}
 \usepackage{hyperref} % 最后加载
 \hypersetup{
   pdftitle=语法修辞逻辑笔记,
@@ -20,7 +20,7 @@
 \title{语法修辞逻辑笔记}
 \author{}
 \date{编译时间：\today}
-\makeindex
+\makeindex[intoc]
 
 \begin{document}
 

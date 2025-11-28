@@ -4,15 +4,62 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
+      - name: Checkout
       - uses: actions/checkout@v6
-      - uses: xu-cheng/latex-action@v4
+
+      - name: Setup Windows Chinese Language Pack
+        run: |
+          Install-Language -Language zh-CN -CopyToSettings
+          Set-WinSystemLocale -SystemLocale zh-CN
+          Set-Culture zh-CN
+          Restart-Service -Name "AppReadiness" -Force
+        shell: pwsh
+
+      - name: Install Chinese fonts (Windows system fonts)
+        run: |
+          $fonts = @("SimSun", "SimHei", "KaiTi", "Microsoft YaHei")
+          foreach ($font in $fonts) {
+            Write-Host "Checking font: $font"
+          }
+        shell: pwsh
+
+      - name: Setup Tectonic
+      - uses: wtfjoke/setup-tectonic@v4
+
+      - name: Build PDF with Tectonic
+        run: |
+          cd src
+
+          Copy-Item grlnotes.tex grlnotes-a4paper.tex
+          $content = Get-Content grlnotes-a4paper.tex
+          $content[0] = '\documentclass[final,oneside,fontset=windows]{ctexbook}'
+          $content[1] = '\setmainfont{Times New Roman}'
+          $content[2] = '\usepackage[a4paper]{geometry}'
+          $content | Set-Content grlnotes-a4paper.tex
+
+          tectonic -X compile -Z shell-escape grlnotes-a4paper.tex
+
+          Copy-Item grlnotes.tex grlnotes-b5paper.tex
+          $content = Get-Content grlnotes-b5paper.tex
+          $content[0] = '\documentclass[final,oneside,fontset=windows]{ctexbook}'
+          $content[1] = '\setmainfont{Times New Roman}'
+          $content[2] = '\usepackage[b5paper]{geometry}'
+          $content | Set-Content grlnotes-b5paper.tex
+
+          tectonic -X compile -Z shell-escape grlnotes-b5paper.tex
+        shell: pwsh
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
         with:
-          root_file: grlnotes.tex
-          working_directory: src
-          latexmk_use_xelatex: true
-      - uses: actions/upload-artifact@v4
+          path: src/grlnotes-b5paper.pdf
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
         with:
-          name: grlnotes
-          path: src/grlnotes.pdf
+          files: |
+            src/grlnotes-a4paper.pdf
+            src/grlnotes-b5paper.pdf
