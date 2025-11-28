@@ -10,7 +10,7 @@ jobs:
 
       - name: Setup Windows Chinese Language Pack
         run: |
-          Add-WindowsCapability -Online -Name "Language.Fonts.Hans~~~zh-CN~0.0.1.0"
+          Install-Language -Language zh-CN -ExcludeFeature
         shell: pwsh
 
       - uses: wtfjoke/setup-tectonic@v4
