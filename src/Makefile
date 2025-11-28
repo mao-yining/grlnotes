@@ -2,7 +2,7 @@ NAME    = grlnotes
 PDF     = $(NAME).pdf
 REQUIRE = $(NAME).tex
 
-TEX     = latexmk -xelatex
+TEX     = latexmk -lualatex
 MODE    = -interaction=nonstopmode -synctex=1 -shell-escape
 
 RM      = rm -f

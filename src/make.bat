@@ -2,7 +2,7 @@
 cd %~dp0
 set NAME=grlnotes
 set PDF=%NAME%.pdf
-set TEX=latexmk -xelatex
+set TEX=latexmk -lualatex
 set MODE=-interaction=nonstopmode -synctex=1
 
 if "%1"=="clean" goto clean
