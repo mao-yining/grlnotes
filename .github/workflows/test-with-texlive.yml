@@ -1,0 +1,18 @@
+name: test
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: xu-cheng/latex-action@v4
+        with:
+          root_file: grlnotes.tex
+          working_directory: src
+          latexmk_use_xelatex: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: grlnotes
+          path: src/grlnotes.pdf
