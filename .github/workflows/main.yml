@@ -6,7 +6,6 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Checkout
       - uses: actions/checkout@v6
 
       - name: Setup Windows Chinese Language Pack
@@ -20,12 +19,9 @@ jobs:
       - name: Install Chinese fonts (Windows system fonts)
         run: |
           $fonts = @("SimSun", "SimHei", "KaiTi", "Microsoft YaHei")
-          foreach ($font in $fonts) {
-            Write-Host "Checking font: $font"
-          }
+          foreach ($font in $fonts) { Write-Host "Checking font: $font" }
         shell: pwsh
 
-      - name: Setup Tectonic
       - uses: wtfjoke/setup-tectonic@v4
 
       - name: Build PDF with Tectonic
