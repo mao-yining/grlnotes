@@ -10,16 +10,7 @@ jobs:
 
       - name: Setup Windows Chinese Language Pack
         run: |
-          Install-Language -Language zh-CN -CopyToSettings
-          Set-WinSystemLocale -SystemLocale zh-CN
-          Set-Culture zh-CN
-          Restart-Service -Name "AppReadiness" -Force
-        shell: pwsh
-
-      - name: Install Chinese fonts (Windows system fonts)
-        run: |
-          $fonts = @("SimSun", "SimHei", "KaiTi", "Microsoft YaHei")
-          foreach ($font in $fonts) { Write-Host "Checking font: $font" }
+          Add-WindowsCapability -Online -Name "Language.Fonts.Hans~~~zh-CN~0.0.1.0"
         shell: pwsh
 
       - uses: wtfjoke/setup-tectonic@v4
