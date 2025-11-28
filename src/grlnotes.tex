@@ -7,8 +7,7 @@
 \usepackage{multicol}
 \usepackage{tocbibind}
 \usepackage[normalem]{ulem} % normalem 选项防止对 \emph 的修改
-\usepackage[style=gb7714-2015]{biblatex}
-\usepackage{imakeidx}
+\usepackage{makeidx}
 \usepackage{hyperref} % 最后加载
 \hypersetup{
   pdftitle=语法修辞逻辑笔记,
@@ -21,8 +20,7 @@
 \title{语法修辞逻辑笔记}
 \author{}
 \date{编译时间：\today}
-\addbibresource{references.bib}
-\makeindex[intoc]
+\makeindex
 
 \begin{document}
 
@@ -6539,9 +6537,23 @@ B（说我“胖了”）→C……”顶真结构。
 
 \backmatter
 
-\nocite{*}
-
-\printbibliography[heading=bibintoc,title={参考书目}]
+\begin{thebibliography}{99}
+  \bibitem{huang2017a} 黄伯荣, 廖序东. 现代汉语（上册）[M]. 高等教育出版社, 2017.
+  \bibitem{huang2017b} 黄伯荣, 廖序东. 现代汉语（下册）[M]. 高等教育出版社, 2017.
+  \bibitem{shao2016} 邵敬敏. 现代汉语通论（全2 册）[M]. 上海教育出版社, 2016.
+  \bibitem{zhu1982} 朱德熙. 语法讲义[M]. 商务印书馆, 1982.
+  \bibitem{lv2005} 吕叔湘. 汉语语法分析问题[M]. 商务印书馆, 2005.
+  \bibitem{chen1991} 陈法今. 应用修辞[M]. 江苏教育出版社, 1991.
+  \bibitem{chen2008} 陈望道. 修辞学发凡[M]. 复旦大学出版社, 2008.
+  \bibitem{wang1997} 王国钦, 胡小林. 常见语病的修改与分析[M]. 南京出版社, 1997.
+  \bibitem{yu1999} 喻旭初. 高中语文知识手册[M]. 江苏古籍出版社, 1999.
+  \bibitem{wu2020} 吴礼权. 现代汉语修辞学[M]. 复旦大学出版社, 2020.
+  \bibitem{wang2014} 王希杰. 汉语修辞学[M]. 商务印书馆, 2014.
+  \bibitem{jin2006} 金岳霖. 形式逻辑[M]. 2 版. 人民教育出版社, 2006.
+  \bibitem{eastchina2010} 华东师范大学哲学系逻辑学教研室. 形式逻辑[M]. 4 版. 华东师范大学出版社, 2010.
+  \bibitem{lian2015} 连丽霞. 形式逻辑教程[M]. 2 版. 中国农业大学出版社, 2015.
+  \bibitem{zhang2001} 张智光. 一生活中的逻辑与智慧[M]. 华文出版社, 2001.
+\end{thebibliography}
 
 \printindex
 
