@@ -8,7 +8,8 @@
 \usepackage{multicol}
 \usepackage{tocbibind}
 \usepackage[normalem]{ulem} % normalem 选项防止对 \emph 的修改
-\usepackage{imakeidx}
+\usepackage[xindy]{imakeidx}
+\makeindex[intoc,options=-L general -C utf8 -I xelatex]
 \usepackage{hyperref} % 最后加载
 \hypersetup{
   pdftitle=语法修辞逻辑笔记,
@@ -21,7 +22,6 @@
 \title{语法修辞逻辑笔记}
 \author{}
 \date{编译时间：\today}
-\makeindex[intoc]
 
 \begin{document}
 
