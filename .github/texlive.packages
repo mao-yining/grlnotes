@@ -1,2 +1,20 @@
 # .github/texlive.packages
+# latex-bin
+
+# collection-latex
 ctex
+geometry
+hyperref
+imakeidx
+makecell
+multirow
+tocbibind
+tools
+ulem
+xindy
+
+# fonts
+tex-gyre
+
+ # make
+latexmk

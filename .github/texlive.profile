@@ -1,6 +1,7 @@
 # .github/texlive.profile
-# Install the scheme basic:
-selected_scheme basic
+# Install the scheme minimal:
+selected_scheme scheme-basic
+collection-langchinese 1
 # Omit documentation files:
 tlpdbopt_install_docfiles 0
 # Omit source files:
