@@ -13,29 +13,28 @@ jobs:
           Install-Language -Language zh-CN -ExcludeFeature
         shell: pwsh
 
-      - uses: wtfjoke/setup-tectonic@v4
+     - uses: ccmaymay/setup-texlive-action@v1
+       with:
+         profile-path: ${{ github.workspace }}/.github/texlive.profile
+         packages-path: ${{ github.workspace }}/.github/texlive.packages
 
-      - name: Build PDF with Tectonic
+      - name: Build PDF
         run: |
           cd src
 
           Copy-Item grlnotes.tex grlnotes-a4paper.tex
           $content = Get-Content grlnotes-a4paper.tex
-          $content[0] = '\documentclass[final,oneside,fontset=windows]{ctexbook}'
-          $content[1] = '\setmainfont{Times New Roman}'
           $content[2] = '\usepackage[a4paper]{geometry}'
           $content | Set-Content grlnotes-a4paper.tex
 
-          tectonic -X compile -Z shell-escape grlnotes-a4paper.tex
+          latexmk grlnotes-a4paper.tex
 
           Copy-Item grlnotes.tex grlnotes-b5paper.tex
           $content = Get-Content grlnotes-b5paper.tex
-          $content[0] = '\documentclass[final,oneside,fontset=windows]{ctexbook}'
-          $content[1] = '\setmainfont{Times New Roman}'
           $content[2] = '\usepackage[b5paper]{geometry}'
           $content | Set-Content grlnotes-b5paper.tex
 
-          tectonic -X compile -Z shell-escape grlnotes-b5paper.tex
+          latexmk grlnotes-b5paper.tex
         shell: pwsh
 
       - name: Upload PDF artifact

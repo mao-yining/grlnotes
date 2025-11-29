@@ -1,0 +1,20 @@
+# .github/texlive.packages
+latex-bin
+
+ctex
+geometry
+graphicx
+array
+longtable
+bigstrut
+makecell
+multirow
+multicol
+tocbibind
+ulem
+imakeidx
+xindy
+hyperref
+
+# font
+tex-gyre

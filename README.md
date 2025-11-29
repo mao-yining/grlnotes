@@ -2,22 +2,13 @@
 
 使用 LaTeX 重新排版，并做了一些修订。
 
+## 下载
+
+本项目使用 Github Action 自动发布，[下载地址](https://github.com/mao-yining/grlnotes/releases/latest)
+
 ## 依赖
 
-使用 XeLaTeX 编译本项目。用到的宏包列表如下：
-
-- ctex
-- geometry
-- graphicx
-- longtable
-- bigstrut
-- multirow
-- multicol
-- tocbibind
-- ulem
-- biblatex
-- imakeidx
-- hyperref
+使用 XeLaTeX 或 LuaLaTeX 编译本项目。用到的宏包详见 ./.github/texlive.packages
 
 ## Contributing
 
