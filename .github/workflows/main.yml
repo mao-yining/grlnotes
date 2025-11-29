@@ -51,14 +51,14 @@ jobs:
           $content[2] = '\usepackage[a4paper]{geometry}'
           $content | Set-Content grlnotes-a4paper.tex
 
-          latexmk -lualatex -interaction=nonstopmode grlnotes-a4paper.tex
+          latexmk -interaction=nonstopmode grlnotes-a4paper.tex
 
           Copy-Item grlnotes.tex grlnotes-b5paper.tex
           $content = Get-Content grlnotes-b5paper.tex
           $content[2] = '\usepackage[b5paper]{geometry}'
           $content | Set-Content grlnotes-b5paper.tex
 
-          latexmk -lualatex -interaction=nonstopmode  grlnotes-b5paper.tex
+          latexmk -interaction=nonstopmode  grlnotes-b5paper.tex
         shell: pwsh
 
       - name: Upload PDF artifact
