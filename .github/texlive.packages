@@ -18,3 +18,4 @@ hyperref
 
 # font
 tex-gyre
+latexmk

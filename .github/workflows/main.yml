@@ -8,10 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Setup Windows Chinese Language Pack
-        run: |
-          Install-Language -Language zh-CN -ExcludeFeature
-        shell: pwsh
+      # - name: Setup Windows Chinese Language Pack
+      #   run: |
+      #     Install-Language -Language zh-CN -ExcludeFeature
+      #   shell: pwsh
 
       - uses: ccmaymay/setup-texlive-action@v1.0.3
         with:
@@ -27,14 +27,14 @@ jobs:
           $content[2] = '\usepackage[a4paper]{geometry}'
           $content | Set-Content grlnotes-a4paper.tex
 
-          latexmk grlnotes-a4paper.tex
+          latexmk -lualatex -interaction=nonstopmode grlnotes-a4paper.tex
 
           Copy-Item grlnotes.tex grlnotes-b5paper.tex
           $content = Get-Content grlnotes-b5paper.tex
           $content[2] = '\usepackage[b5paper]{geometry}'
           $content | Set-Content grlnotes-b5paper.tex
 
-          latexmk grlnotes-b5paper.tex
+          latexmk -lualatex -interaction=nonstopmode  grlnotes-b5paper.tex
         shell: pwsh
 
       - name: Upload PDF artifact
