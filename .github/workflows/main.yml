@@ -13,7 +13,7 @@ jobs:
           Install-Language -Language zh-CN -ExcludeFeature
         shell: pwsh
 
-      - uses: ccmaymay/setup-texlive-action@v1.0.2
+      - uses: ccmaymay/setup-texlive-action@v1.0.3
         with:
           profile-path: ${{ github.workspace }}/.github/texlive.profile
           packages-path: ${{ github.workspace }}/.github/texlive.packages
