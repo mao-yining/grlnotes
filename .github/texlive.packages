@@ -3,18 +3,18 @@
 
 # collection-latex
 ctex
-# geometry
-# hyperref
-# imakeidx
-# makecell
-# multirow
-# tocbibind
-# tools
-# ulem
-# xindy
+geometry
+hyperref
+imakeidx
+makecell
+multirow
+tocbibind
+tools
+ulem
+xindy
 
 # # fonts
-# tex-gyre
+tex-gyre
 
 # # make
-# latexmk
+latexmk

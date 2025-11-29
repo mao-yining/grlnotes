@@ -39,6 +39,7 @@ jobs:
       - name: Build PDF
         run: |
           lualatex --version
+          latexmk --version
           # cd src
 
           # Copy-Item grlnotes.tex grlnotes-a4paper.tex
