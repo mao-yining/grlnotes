@@ -15,12 +15,12 @@ jobs:
 
       - name: Install Chinese fonts if missing
         run: |
-          if (-not (Test-Path "$env:WINDIR\Fonts\simsun.ttc")) {
+          if ((Test-Path "$env:WINDIR\Fonts\simsun.ttc") -and (Test-Path "$env:WINDIR\Fonts\simhei.ttf")) {
+              Write-Host "✅ 中文字体已存在"
+          } else {
               Write-Host "🔄 安装中文语言包..."
               Install-Language -Language zh-CN -ExcludeFeature
-              Write-Host "✅ 安装完成"
-          } else {
-              Write-Host "✅ SimSun 字体已存在"
+              Write-Host "✅ 中文语言包安装完成"
           }
         shell: pwsh
 
