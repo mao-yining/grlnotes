@@ -18,34 +18,34 @@ jobs:
          profile-path: ${{ github.workspace }}/.github/texlive.profile
          packages-path: ${{ github.workspace }}/.github/texlive.packages
 
-      - name: Build PDF
-        run: |
-          cd src
+     - name: Build PDF
+       run: |
+         cd src
 
-          Copy-Item grlnotes.tex grlnotes-a4paper.tex
-          $content = Get-Content grlnotes-a4paper.tex
-          $content[2] = '\usepackage[a4paper]{geometry}'
-          $content | Set-Content grlnotes-a4paper.tex
+         Copy-Item grlnotes.tex grlnotes-a4paper.tex
+         $content = Get-Content grlnotes-a4paper.tex
+         $content[2] = '\usepackage[a4paper]{geometry}'
+         $content | Set-Content grlnotes-a4paper.tex
 
-          latexmk grlnotes-a4paper.tex
+         latexmk grlnotes-a4paper.tex
 
-          Copy-Item grlnotes.tex grlnotes-b5paper.tex
-          $content = Get-Content grlnotes-b5paper.tex
-          $content[2] = '\usepackage[b5paper]{geometry}'
-          $content | Set-Content grlnotes-b5paper.tex
+         Copy-Item grlnotes.tex grlnotes-b5paper.tex
+         $content = Get-Content grlnotes-b5paper.tex
+         $content[2] = '\usepackage[b5paper]{geometry}'
+         $content | Set-Content grlnotes-b5paper.tex
 
-          latexmk grlnotes-b5paper.tex
-        shell: pwsh
+         latexmk grlnotes-b5paper.tex
+       shell: pwsh
 
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
-        with:
-          path: src/grlnotes-b5paper.pdf
+     - name: Upload PDF artifact
+       uses: actions/upload-artifact@v4
+       with:
+         path: src/grlnotes-b5paper.pdf
 
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        if: github.ref_type == 'tag'
-        with:
-          files: |
-            src/grlnotes-a4paper.pdf
-            src/grlnotes-b5paper.pdf
+     - name: Release
+       uses: softprops/action-gh-release@v2
+       if: github.ref_type == 'tag'
+       with:
+         files: |
+           src/grlnotes-a4paper.pdf
+           src/grlnotes-b5paper.pdf
