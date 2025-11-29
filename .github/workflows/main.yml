@@ -18,6 +18,24 @@ jobs:
           profile-path: ${{ github.workspace }}/.github/texlive.profile
           packages-path: ${{ github.workspace }}/.github/texlive.packages
 
+      - name: Install Test
+        run: |
+          tlmgr install ctex
+          tlmgr install collection-latex
+          tlmgr install ctex
+          tlmgr install geometry
+          tlmgr install hyperref
+          tlmgr install imakeidx
+          tlmgr install makecell
+          tlmgr install multirow
+          tlmgr install tocbibind
+          tlmgr install tools
+          tlmgr install ulem
+          tlmgr install xindy
+          tlmgr install tex-gyre
+          tlmgr install latexmk
+        shell: pwsh
+
       - name: Build PDF
         run: |
           cd src
