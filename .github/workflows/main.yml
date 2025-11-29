@@ -8,15 +8,21 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      # - name: Setup Windows Chinese Language Pack
-      #   run: |
-      #     Install-Language -Language zh-CN -ExcludeFeature
-      #   shell: pwsh
-
       - uses: ccmaymay/setup-texlive-action@v1.0.3
         with:
           profile-path: ${{ github.workspace }}/.github/texlive.profile
           packages-path: ${{ github.workspace }}/.github/texlive.packages
+
+      - name: Install Chinese fonts if missing
+        run: |
+          if (-not (Test-Path "$env:WINDIR\Fonts\simsun.ttc")) {
+              Write-Host "🔄 安装中文语言包..."
+              Install-Language -Language zh-CN -ExcludeFeature
+              Write-Host "✅ 安装完成"
+          } else {
+              Write-Host "✅ SimSun 字体已存在"
+          }
+        shell: pwsh
 
       # - name: Install Test
       #   run: |
@@ -38,23 +44,21 @@ jobs:
 
       - name: Build PDF
         run: |
-          lualatex --version
-          latexmk --version
-          # cd src
+          cd src
 
-          # Copy-Item grlnotes.tex grlnotes-a4paper.tex
-          # $content = Get-Content grlnotes-a4paper.tex
-          # $content[2] = '\usepackage[a4paper]{geometry}'
-          # $content | Set-Content grlnotes-a4paper.tex
+          Copy-Item grlnotes.tex grlnotes-a4paper.tex
+          $content = Get-Content grlnotes-a4paper.tex
+          $content[2] = '\usepackage[a4paper]{geometry}'
+          $content | Set-Content grlnotes-a4paper.tex
 
-          # latexmk -lualatex -interaction=nonstopmode grlnotes-a4paper.tex
+          latexmk -lualatex -interaction=nonstopmode grlnotes-a4paper.tex
 
-          # Copy-Item grlnotes.tex grlnotes-b5paper.tex
-          # $content = Get-Content grlnotes-b5paper.tex
-          # $content[2] = '\usepackage[b5paper]{geometry}'
-          # $content | Set-Content grlnotes-b5paper.tex
+          Copy-Item grlnotes.tex grlnotes-b5paper.tex
+          $content = Get-Content grlnotes-b5paper.tex
+          $content[2] = '\usepackage[b5paper]{geometry}'
+          $content | Set-Content grlnotes-b5paper.tex
 
-          # latexmk -lualatex -interaction=nonstopmode  grlnotes-b5paper.tex
+          latexmk -lualatex -interaction=nonstopmode  grlnotes-b5paper.tex
         shell: pwsh
 
       - name: Upload PDF artifact

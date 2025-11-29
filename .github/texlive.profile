@@ -1,6 +1,6 @@
 # .github/texlive.profile
 # Install the scheme basic:
-selected_scheme basic 
+selected_scheme basic
 # Omit documentation files:
 tlpdbopt_install_docfiles 0
 # Omit source files:
