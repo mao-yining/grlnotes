@@ -1,11 +1,11 @@
 # .github/texlive.packages
-latex-bin
+# latex-bin
 
-collection-latex
+# collection-latex
 ctex
-geometry
-hyperref
-imakeidx
+# geometry
+# hyperref
+# imakeidx
 # makecell
 # multirow
 # tocbibind
