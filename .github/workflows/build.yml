@@ -1,6 +1,12 @@
 name: build
 
-on: push
+on:
+  pull_request:
+    types:
+      - opened
+  push:
+    tags:
+      - v*
 
 jobs:
   build:
@@ -23,48 +29,33 @@ jobs:
               Write-Host "✅ 中文语言包安装完成"
           }
         shell: pwsh
-
-      # - name: Install Test
-      #   run: |
-      #     tlmgr install ctex
-      #     tlmgr install collection-latex
-      #     tlmgr install ctex
-      #     tlmgr install geometry
-      #     tlmgr install hyperref
-      #     tlmgr install imakeidx
-      #     tlmgr install makecell
-      #     tlmgr install multirow
-      #     tlmgr install tocbibind
-      #     tlmgr install tools
-      #     tlmgr install ulem
-      #     tlmgr install xindy
-      #     tlmgr install tex-gyre
-      #     tlmgr install latexmk
-      #   shell: pwsh
-
       - name: Build PDF
         run: |
           cd src
 
           Copy-Item grlnotes.tex grlnotes-a4paper.tex
           $content = Get-Content grlnotes-a4paper.tex
-          $content[2] = '\usepackage[a4paper]{geometry}'
+          $content[2] = '\setmainfont{Times New Roman}'
+          $content[3] = '\usepackage[a4paper]{geometry}'
           $content | Set-Content grlnotes-a4paper.tex
 
           latexmk -interaction=nonstopmode grlnotes-a4paper.tex
 
           Copy-Item grlnotes.tex grlnotes-b5paper.tex
           $content = Get-Content grlnotes-b5paper.tex
-          $content[2] = '\usepackage[b5paper]{geometry}'
+          $content[2] = '\setmainfont{Times New Roman}'
+          $content[3] = '\usepackage[b5paper]{geometry}'
           $content | Set-Content grlnotes-b5paper.tex
 
-          latexmk -interaction=nonstopmode  grlnotes-b5paper.tex
+          latexmk -interaction=nonstopmode grlnotes-b5paper.tex
         shell: pwsh
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          path: src/grlnotes-b5paper.pdf
+          path: |
+            src/grlnotes-b5paper.pdf
+            src/grlnotes-b4paper.pdf
 
       - name: Release
         uses: softprops/action-gh-release@v2
