@@ -17,6 +17,8 @@ jobs:
         with:
           profile-path: ${{ github.workspace }}/.github/texlive.profile
           packages-path: ${{ github.workspace }}/.github/texlive.packages
+
+      - name: Build PDF
         run: |
           cd src
 
