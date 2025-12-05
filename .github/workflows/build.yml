@@ -1,9 +1,6 @@
 name: build
 
 on:
-  pull_request:
-    types:
-      - opened
   push:
     tags:
       - v*
