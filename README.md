@@ -4,7 +4,7 @@
 
 ## 下载
 
-本项目使用 Github Action 自动发布，[下载地址](https://github.com/mao-yining/grlnotes/releases/latest)
+在 Release 页面下载，[下载地址](https://codeberg.org/mao-yining/grlnotes/releases/latest)。
 
 ## 依赖
 
