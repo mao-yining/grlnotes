@@ -1,3 +1,7 @@
+> [!注意]
+> 本仓库已经迁移到 (Codeberg)[https://codeberg.org/mao-yining/grlnotes]
+
+
 # 语法修辞逻辑笔记（Grammar Rhetoric Logic Notes）
 
 使用 LaTeX 重新排版，并做了一些修订。
