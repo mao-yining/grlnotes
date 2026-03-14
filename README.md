@@ -1,4 +1,5 @@
-> [!注意]
+> [!Warning]
+> 
 > 本仓库已经迁移到 (Codeberg)[https://codeberg.org/mao-yining/grlnotes]
 
 
